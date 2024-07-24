@@ -13,8 +13,17 @@ class AnnoTxt:
                 stripped_line = line.strip()
                 if stripped_line:
                     anno_infor = stripped_line.split(' ')
-                    ret.append(list(anno_infor))
-        return np.array(ret)
+                    anno_infor = np.array(anno_infor, dtype=np.float32)
+                    anno = []
+                    anno.append(anno_infor[0])
+                    anno.append(anno_infor[1] - anno_infor[3]/2)
+                    anno.append(anno_infor[2] - anno_infor[4]/2)
+                    anno.append(anno_infor[1] + anno_infor[3]/2)
+                    anno.append(anno_infor[2] + anno_infor[4]/2)
+                    ret.append(list(anno))
+        
+        # [[label, xmin, ymin, xmax, ymax], [], ...]
+        return np.array(ret, dtype=np.float32)
 
 
 if __name__ == "__main__":
@@ -24,6 +33,7 @@ if __name__ == "__main__":
     idx = random.randint(0, len(datapath.anno_list()[0])-1)
 
     print(datapath.anno_list()[0][idx])
+    print(datapath.img_list()[0][idx])
     print(anno(datapath.anno_list()[0][idx]))
 
 
