@@ -47,7 +47,7 @@ def create_extras():
     return nn.ModuleList(layers)
 
 
-def create_loc_conf(num_classes=21, bbox_aspect_num=[4, 6, 6, 6, 4, 4]):
+def create_loc_conf(num_classes=8, bbox_aspect_num=[4, 6, 6, 6, 4, 4]):
     loc_layers = []
     conf_layers = []
 

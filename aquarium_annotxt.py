@@ -14,13 +14,14 @@ class AnnoTxt:
                 if stripped_line:
                     anno_infor = stripped_line.split(' ')
                     anno_infor = np.array(anno_infor, dtype=np.float32)
-                    anno = []
-                    anno.append(anno_infor[0])
-                    anno.append(anno_infor[1] - anno_infor[3]/2)
-                    anno.append(anno_infor[2] - anno_infor[4]/2)
-                    anno.append(anno_infor[1] + anno_infor[3]/2)
-                    anno.append(anno_infor[2] + anno_infor[4]/2)
-                    ret.append(list(anno))
+                    if len(anno_infor) > 0:
+                        anno = []
+                        anno.append(anno_infor[0])
+                        anno.append(anno_infor[1] - anno_infor[3]/2)
+                        anno.append(anno_infor[2] - anno_infor[4]/2)
+                        anno.append(anno_infor[1] + anno_infor[3]/2)
+                        anno.append(anno_infor[2] + anno_infor[4]/2)
+                        ret.append(list(anno))
         
         # [[label, xmin, ymin, xmax, ymax], [], ...]
         return np.array(ret, dtype=np.float32)

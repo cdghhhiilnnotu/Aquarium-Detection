@@ -39,7 +39,7 @@ class DefBox():
 if __name__ == "__main__":
 
     cfg = {
-        "num_classes": 7,
+        "num_classes": 8,
         "input_size": 300, #SSD300
         "bbox_aspect_num": [4, 6, 6, 6, 4, 4], # scale frame for source1->source6`
         "feature_maps": [38, 19, 10, 5, 3, 1],
